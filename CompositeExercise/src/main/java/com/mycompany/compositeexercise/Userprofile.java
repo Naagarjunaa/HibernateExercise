@@ -7,13 +7,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author naagarjunaa
  */
 @Entity
-@Table(name = "userprofile")
+@Table(
+       name = "userprofile",
+       uniqueConstraints = {
+           @UniqueConstraint(columnNames = {"name", "phone"})
+       })
 public class Userprofile implements Serializable {
 
     private static final long serialVersionUID = 1L;
