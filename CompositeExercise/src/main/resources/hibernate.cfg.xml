@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+ 
+ 
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect </property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">argusadmin</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Practice</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">false</property>
+        <mapping class="com.mycompany.compositeexercise.Userprofile"/>
+    </session-factory>
+</hibernate-configuration>
