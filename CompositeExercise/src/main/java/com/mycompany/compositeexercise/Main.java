@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.compositeexercise;
 
 import org.hibernate.Session;
@@ -22,7 +18,7 @@ public class Main {
         session.beginTransaction();
         Userprofile up = new Userprofile(2, "prabakaran", "7339011438", "abc@gmail.com");
 //        Userprofile up = new Userprofile(null, "", "", "abc@gmail.com");
-
+//ConstraintViolationException
         session.save(up);
         session.getTransaction().commit();
         System.out.println(up);
