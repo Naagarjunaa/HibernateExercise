@@ -12,6 +12,9 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Practice</property>
         <property name="show_sql">true</property>
         <property name="format_sql">false</property>
-        <mapping class="com.mycompany.hibernatehelloworld.model.Hello"/>
+        <mapping class="com.mycompany.demoonetoone.Entity.Student"/>
+        <mapping class="com.mycompany.demoonetoone.Entity.Address"/>
+        <mapping class="com.mycompany.demoonetoone.Entity.Education"/>
+
     </session-factory>
 </hibernate-configuration>
