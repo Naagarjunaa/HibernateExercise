@@ -1,26 +1,28 @@
-
 package com.argus.hibernateauctions.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author naagarjunaa
  */
 @Entity
+@Table(name="usertable")
 public class User {
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
-    @Id
     private long userid;
     private String firstname;
     private String lastname;
@@ -29,17 +31,17 @@ public class User {
     private String email;
     private int ranking;
     private Boolean admin;
-    @OneToMany
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Item> items = new ArrayList<>();
-    @OneToMany
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
-    @OneToMany
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Bid> bids = new ArrayList<>();
-    @OneToMany
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<BillingDetails> biilingBillingDetailses = new ArrayList<>();
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Shipment shipment;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
     public long getUserid() {
@@ -153,5 +155,5 @@ public class User {
     public void setAddress(Address address) {
         this.address = address;
     }
-    
+
 }

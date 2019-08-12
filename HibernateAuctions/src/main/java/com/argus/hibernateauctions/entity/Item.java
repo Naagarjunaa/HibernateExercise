@@ -2,15 +2,15 @@
 package com.argus.hibernateauctions.entity;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -33,17 +33,17 @@ public class Item {
     private Date endDate;
     private String state;
     private Date approvalDatetime;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user; 
-    @OneToMany
+    @OneToMany(mappedBy = "item",orphanRemoval = true,cascade = CascadeType.ALL)
     private List<Bid> bids = new ArrayList<>();
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Bid successbid ;
-    @OneToMany
+    @OneToMany(mappedBy = "item",orphanRemoval = true,cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Shipment shipment;
 
     public long getItemid() {
@@ -118,11 +118,11 @@ public class Item {
         this.approvalDatetime = approvalDatetime;
     }
 
-    public Category getCategorys() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategorys(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -165,6 +165,5 @@ public class Item {
     public void setShipment(Shipment shipment) {
         this.shipment = shipment;
     }
-
 
 }

@@ -1,7 +1,8 @@
 
 package com.argus.hibernateauctions.entity;
 
-import java.sql.Date;
+import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,9 +23,9 @@ public class Comment {
     private int rating;
     private String text;
     private Date commentcreated;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Item item;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
     public long getCommentid() {

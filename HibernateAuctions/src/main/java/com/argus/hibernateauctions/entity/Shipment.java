@@ -1,15 +1,13 @@
 
 package com.argus.hibernateauctions.entity;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -25,10 +23,13 @@ public class Shipment {
     private int inspectionperioddays;
     private String state;
     private Date shipmentcreated;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Item item;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+
 
     public long getShipmentid() {
         return shipmentid;
@@ -62,14 +63,6 @@ public class Shipment {
         this.shipmentcreated = shipmentcreated;
     }
 
-    public Item getItems() {
-        return item;
-    }
-
-    public void setItems(Item items) {
-        this.item = items;
-    }
-
     public User getUser() {
         return user;
     }
@@ -78,5 +71,20 @@ public class Shipment {
         this.user = user;
     }
     
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
     
 }

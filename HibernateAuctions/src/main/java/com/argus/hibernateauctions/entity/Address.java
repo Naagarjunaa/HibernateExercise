@@ -1,6 +1,6 @@
-
 package com.argus.hibernateauctions.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Address {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
     @Id
@@ -21,12 +22,10 @@ public class Address {
     private String street;
     private String zipcode;
     private String city;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Shipment shipment;
-    @OneToOne
-    private Address address;
 
     public long getAddressid() {
         return addressid;
@@ -76,11 +75,4 @@ public class Address {
         this.shipment = shipment;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 }

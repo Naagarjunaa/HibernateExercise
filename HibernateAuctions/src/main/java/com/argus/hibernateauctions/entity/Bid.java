@@ -2,15 +2,13 @@
 package com.argus.hibernateauctions.entity;
 
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -26,11 +24,11 @@ public class Bid {
     private long bidid;
     private BigDecimal amount;
     private Date bidcreated;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Item item;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Item successitem;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
     public long getBidid() {

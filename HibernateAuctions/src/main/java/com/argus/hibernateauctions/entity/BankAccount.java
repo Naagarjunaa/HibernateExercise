@@ -1,35 +1,25 @@
-
 package com.argus.hibernateauctions.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 /**
  *
  * @author naagarjunaa
  */
-@Embeddable
-public class BankAccount {
+@Entity
+@Table(name = "bankaccount")
+@PrimaryKeyJoinColumn(name = "billid")
+public class BankAccount extends BillingDetails {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false)
-    @Id
-    private long bankid;
     private String number;
     private String bankname;
     private String swift;
-
-    public long getBankid() {
-        return bankid;
-    }
-
-    public void setBankid(long bankid) {
-        this.bankid = bankid;
-    }
-
+    @OneToOne(mappedBy = "bankaccount",cascade = CascadeType.ALL)
+   private BillingDetails billingDetails;
     public String getNumber() {
         return number;
     }
