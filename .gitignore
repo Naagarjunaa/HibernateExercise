@@ -1,2 +1,6 @@
-/HibernateHelloWorld/target/
-/CompositeExercise/target/
+HibernateHelloWorld/target/
+CompositeExercise/target/
+DemoOneToOne/target/
+DemoOneToMany/target/
+JPAExercise/target/
+HibernateAuctions/target/
